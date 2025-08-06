@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
@@ -38,7 +38,7 @@ const priceRanges = [
 
 const brands = ["Apple", "Samsung", "Sony"];
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const { addItem } = useCart();
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
@@ -101,7 +101,6 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-
       {/* Hero Section */}
       <section className="bg-gradient-primary text-white py-12">
         <div className="container mx-auto px-4">
@@ -115,7 +114,6 @@ export default function SearchPage() {
           </div>
         </div>
       </section>
-
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
@@ -137,7 +135,6 @@ export default function SearchPage() {
                   />
                 </div>
               </div>
-
               {/* Categories */}
               <div>
                 <h3 className="font-semibold text-lg mb-4">Categorías</h3>
@@ -169,7 +166,6 @@ export default function SearchPage() {
                   ))}
                 </div>
               </div>
-
               {/* Brands */}
               <div>
                 <h3 className="font-semibold text-lg mb-4">Marcas</h3>
@@ -191,7 +187,6 @@ export default function SearchPage() {
                   ))}
                 </div>
               </div>
-
               {/* Price Range */}
               <div>
                 <h3 className="font-semibold text-lg mb-4">Rango de precio</h3>
@@ -214,7 +209,6 @@ export default function SearchPage() {
                   ))}
                 </div>
               </div>
-
               {/* Clear Filters */}
               <button
                 onClick={() => {
@@ -229,7 +223,6 @@ export default function SearchPage() {
               </button>
             </div>
           </aside>
-
           {/* Main Content */}
           <main className="flex-1">
             {/* Toolbar */}
@@ -247,7 +240,6 @@ export default function SearchPage() {
                     {sortedProducts.length} productos encontrados
                   </span>
                 </div>
-
                 <div className="flex items-center gap-4">
                   <select
                     value={sortBy}
@@ -260,7 +252,6 @@ export default function SearchPage() {
                       </option>
                     ))}
                   </select>
-
                   <div className="flex border border-gray-300 rounded-lg overflow-hidden">
                     <button
                       onClick={() => setViewMode("grid")}
@@ -286,7 +277,6 @@ export default function SearchPage() {
                 </div>
               </div>
             </div>
-
             {/* Results */}
             {sortedProducts.length === 0 ? (
               <div className="bg-white rounded-xl p-12 text-center">
@@ -359,7 +349,6 @@ export default function SearchPage() {
                         />
                       </Link>
                     </div>
-
                     <div
                       className={`space-y-2 ${
                         viewMode === "list" ? "flex-1" : ""
@@ -370,7 +359,6 @@ export default function SearchPage() {
                           {product.name}
                         </h3>
                       </Link>
-
                       <div className="flex items-center space-x-1">
                         <div className="flex">
                           {[...Array(5)].map((_, i) => (
@@ -388,13 +376,11 @@ export default function SearchPage() {
                           ({product.reviews})
                         </span>
                       </div>
-
                       {viewMode === "list" && (
                         <p className="text-gray text-sm line-clamp-2">
                           {product.description}
                         </p>
                       )}
-
                       <div className="space-y-1">
                         <div className="flex items-center space-x-2">
                           <span className="text-xl font-bold text-primary">
@@ -413,7 +399,6 @@ export default function SearchPage() {
                           </span>
                         )}
                       </div>
-
                       <button
                         onClick={() => addItem(product)}
                         className="group relative overflow-hidden w-full bg-gradient-primary text-white px-4 py-3 rounded-lg font-medium hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 mt-4"
@@ -432,8 +417,15 @@ export default function SearchPage() {
           </main>
         </div>
       </div>
-
       <Footer />
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Cargando búsqueda...</div>}>
+      <SearchPageContent />
+    </Suspense>
   );
 }
