@@ -9,20 +9,29 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-magenta text-blanco hover:bg-magenta-dark shadow-lg hover:shadow-xl",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-red-600 text-blanco hover:bg-red-700 shadow-lg hover:shadow-xl",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-magenta bg-transparent text-magenta hover:bg-magenta hover:text-blanco",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-zafiro text-blanco hover:bg-zafiro-dark shadow-lg hover:shadow-xl",
+        ghost: "hover:bg-magenta/10 hover:text-magenta",
+        link: "text-magenta underline-offset-4 hover:underline",
+        // Nuevas variantes con la paleta personalizada
+        magenta: "bg-magenta text-blanco hover:bg-magenta-dark shadow-lg hover:shadow-xl",
+        zafiro: "bg-zafiro text-blanco hover:bg-zafiro-dark shadow-lg hover:shadow-xl",
+        amatista: "bg-amatista text-blanco hover:bg-amatista-dark shadow-lg hover:shadow-xl",
+        oro: "bg-oro text-negro hover:bg-oro-dark shadow-lg hover:shadow-xl",
+        gradient: "bg-gradient-primary text-blanco hover:opacity-90 shadow-lg hover:shadow-xl",
+        gradientSecondary: "bg-gradient-secondary text-blanco hover:opacity-90 shadow-lg hover:shadow-xl",
+        gradientAccent: "bg-gradient-accent text-negro hover:opacity-90 shadow-lg hover:shadow-xl",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-12 rounded-lg px-10 text-base",
         icon: "h-10 w-10",
       },
     },

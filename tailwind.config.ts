@@ -13,6 +13,38 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Nueva paleta de colores personalizada
+        magenta: {
+          DEFAULT: "#F522A4",
+          light: "#FF4DB8",
+          dark: "#D41A8A",
+        },
+        zafiro: {
+          DEFAULT: "#4D20EE",
+          light: "#6B3DFF",
+          dark: "#3A18B8",
+        },
+        amatista: {
+          DEFAULT: "#6733BA",
+          light: "#8A4CD9",
+          dark: "#4F2690",
+        },
+        oro: {
+          DEFAULT: "#E7D31A",
+          light: "#F0E04D",
+          dark: "#D4C215",
+        },
+        negro: {
+          DEFAULT: "#1A1A1A",
+          light: "#2A2A2A",
+          dark: "#0A0A0A",
+        },
+        blanco: {
+          DEFAULT: "#E5E5E5",
+          light: "#FFFFFF",
+          dark: "#CCCCCC",
+        },
+        // Colores del sistema (manteniendo compatibilidad)
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -23,14 +55,14 @@ const config: Config = {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        primary: "#0012FF",
-        secondary: "#9E22FF",
+        primary: "#F522A4", // Magenta Imperial como color primario
+        secondary: "#4D20EE", // Zafiro Eléctrico como color secundario
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#6733BA", // Amatista como acento
           foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
@@ -57,8 +89,8 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        black: "#000000",
-        white: "#FFFFFF",
+        black: "#1A1A1A", // Negro Ceniza
+        white: "#E5E5E5", // Blanco Platino
         gray: {
           50: "#f9fafb",
           100: "#f3f4f6",
@@ -70,7 +102,7 @@ const config: Config = {
           700: "#374151",
           800: "#1f2937",
           900: "#111827",
-          DEFAULT: "#A6A6A6", // Your custom gray color
+          DEFAULT: "#A6A6A6",
         },
       },
       borderRadius: {
@@ -104,7 +136,9 @@ const config: Config = {
         balgin: ["var(--font-inter)", "sans-serif"],
       },
       backgroundImage: {
-        "gradient-primary": "linear-gradient(135deg, #0012FF 0%, #9E22FF 100%)",
+        "gradient-primary": "linear-gradient(135deg, #F522A4 0%, #4D20EE 100%)",
+        "gradient-secondary": "linear-gradient(135deg, #6733BA 0%, #4D20EE 100%)",
+        "gradient-accent": "linear-gradient(135deg, #E7D31A 0%, #F522A4 100%)",
       },
     },
   },
